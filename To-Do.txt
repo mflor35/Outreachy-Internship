@@ -1,50 +1,110 @@
-* DONE Remove old scripts
-** DONE bumspecfile.py
-** DONE rediffall.sh
-** DONE allarchconfig
+* Tasks 
+  
+** DONE Remove old scripts
 
-* TODO Fix scripts
-** TODO sort-config
-** DONE grab-logs.sh build logs URL is wrong
-*** NOTE: 
-** DONE generate-git-snapshot.sh				   
+*** :patch:accepted: bumspecfile.py
+
+    NOTE: pythong script that changes the version and revision number of the specfile.
+    This script is no longer in use. Use rpmdev-bumspecfile instead.
+
+*** :patch:accepted: rediffall.sh
+
+    NOTE: old script used by previous maintainers 
+    
+*** :patch:accepted: allarchconfig
+    
+    NOTE: The functionality of this script is already in kernel.spec
+
+
+** DONE Fix scripts
+
+*** :analysing: sort-config 
+**** TODO Try to fix it
+
+    NOTE: Not making much progress here
+
+*** DONE :patch:in_review: grab-logs.sh
+**** DONE [PATCHv2] FIX wget warning and save logs to log directory if already present.
+
+    NOTE: Download the logs from koji server
+
+*** :patch:in_review: generate-git-snapshot.sh
+**** DONE [PATCHv2] FIX Comments bigger than 80 characters in length.
+
+    NOTE: Generates a git snapshot between upstream git tree and fedora's tree.
+
+
+** DONE New Scripts 
+
+*** :patch:in_review: newpatch.sh
+**** TODO [PATCHv2] FIX not being able to run the script from any where
+**** TODO [PATCHv2] Change rpmdev-bumspecfile instead change defineid macro
+**** TODO [PATCHv2] Check for number of arguments rather than specific case
+**** TODO [PATCHv2] check test for checking if a patch is in the current tree
+  
+    NOTE: script will be used to add a new patch to the tree. It should take the path 
+    of the patch and add it to the tree. The script also needs to add the patch to 
+    kernel.spec and change the macro # defineid local to the patch name.
+   
+    eg. ./newpatch path/to/patch description
+
+*** :patch:in_review: fast-build.sh
+**** DONE Submit patch to delete fast-x86_64
+**** TODO FIX unclear comment description
+
+    NOTE: Allows for the compilation of a custom kernel with the bare minimum.
+    The script takes an architecture and source rpm package as argument.
+   
+    eg. ./fast-build.sh x86_64 kernel-X.X.X.src.rpm
+
+*** :patch:in_review: check-patchlist.sh
+   
+    NOTE:
+*** :patch:in_review: generate-perf-man.sh
+**** TODO [PATCHv3] Give a prompt explaining what would you be asking next.
+**** TODO [PATCHv3] Delete unnecessary comments
+
+     NOTE: Helps generate the perf-man tarball
+
+     NOTE: When send request for PATCHvX add a description of the things that have 
+     been changing.
+
+*** :buggy: test-rpmbuilds
+**** TODO Log the result of each build
+**** TODO Create log files per build combo with result and time it took to compile
+
+    NOTE: helps with the testing of all the rpmbuild combinations to compile a custom kernel.
+ 	   
+
+   
+** DONE Test rpmbuild combos
+*** TODO send summary to Laura    
 *** NOTE:
- 
-* DONE New Scripts/ Refactor
-** DONE newpatch.sh			
-*** NOTE: Do do not bump spec file 		  
-** DONE fast-build.sh to take arch as argument
-*** NOTE: Submit patch to remove fast-x86_64
-** DONE script to test rpmbuild cobos
-*** NOTE: 
-** DONE script to find patches not in PatchList.txt		    
-*** NOTE:
+**** :successful: rpmbuild --target x86_64 --without debuginfo --without perf --without tools 
+**** :successful: rpmbuild --target x86_64 --without debuginfo --with perf --with tools 
+**** :successful: rpmbuild --target x86_64 --without debuginfo --without perf --with tools 
+**** :successful: rpmbuild --target x86_64 --without debuginfo --with perf --without tools 
+**** :successful: rpmbuild --target x86_64 --with debuginfo --with perf --with tools
+**** :successful: rpmbuild --target x86_64 --with debuginfo --with perf --without tools
+**** :successful: rpmbuild --target x86_64 --with debuginfo --without perf --with tools
+**** :successgul: rpmbuild --target x86_64 --without debug --without debuginfo --without perf --without perf --without tools
+**** :successgul: rpmbuild --target x86_64 --without bootwrapper --without debug --without debuginfo --without perf --without tools 
+**** :successful: rpmbuild --target x86_64 --without vdso --without bootwrapper --without debug --without debuginfo --without perf --without tools  
+**** :successful: rpmbuild --target x86_64 --with pae --without vdso --without bootwrapper --without debug --without debuginfo --without perf --without tools
+**** :successful: rpmbuild --target x86_64 --with baseonly --without vdso --without bootwrapper --without debug --without debuginfo --without perf --without tools
+**** :successful: rpmbuild --target x86_64 --with paeonly --without bootwrapper --without debug --without debuginfo --without perf --without tools
+**** :successful: rpmbuild --target x86_64 --with dbonly --without bootwrapper --without debug --without debuginfo --without perf --without tools
+**** :successful: rpmbuild --target x86_64 --with sparce --without bootwrapper --without debug --without debuginfo --without perf --without tool 
+**** :successful: rpmbuild --target x86_64 --with cross --without bootwrapper --without debug --without debuginfo --without perf --without tools
+**** :successful: rpmbuild --target x86_64 --with vanilla --without vdso --without bootwrapper --without debug --without debuginfo --without perf --without tools
+**** :successful: rpmbuild --target x86_64 --with baseonly
+**** :successgul: rpmbuild --target x86_64 --with paeonly
+**** :successful: rpmbuild --target x86_64 --with dbgonly
+**** :successgul: rpmbuild --target x86_64 --with sparse
+**** :successgul: rpmbuild --target x86_64 --with cross
+**** :successgul: rpmbuild --target x86_64 --with release
+**** :successgul: rpmbuild --target x86_64 --with vanilla
 
-* TODO Test rpmbuild combos
-** DONE rpmbuild --target x86_64 --without debuginfo --without perf --without tools                                :successful:
-** DONE rpmbuild --target x86_64 --without debuginfo --with perf --with tools	                                   :successful:
-** DONE rpmbuild --target x86_64 --without debuginfo --without perf --with tools                                   :successful:
-** DONE rpmbuild --target x86_64 --without debuginfo --with perf --without tools                                   :successful:
-** DONE rpmbuild --target x86_64 --with debuginfo --with perf --with tools	                                   :successful:
-** DONE rpmbuild --target x86_64 --with debuginfo --with perf --without tools	                                   :successful:
-** DONE rpmbuild --target x86_64 --with debuginfo --without perf --with tools	                                   :successful:
-** DONE rpmbuild --target x86_64 --without debug --without debuginfo --without perf --without perf --without tools :successful:
-** DONE rpmbuild --target x86_64 --without bootwrapper --without debug --without debuginfo --without perf --without tools :successful:
-** TODO rpmbuild --target x86_64 --without vdso --without bootwrapper --without debug --without debuginfo --without perf --without tools   
-** TODO rpmbuild --target x86_64 --with pae --without vdso --without bootwrapper --without debug --without debuginfo --without perf --without tools
-** TODO rpmbuild --target x86_64 --with baseonly --without vdso --without bootwrapper --without debug --without debuginfo --without perf --without tools
-** TODO rpmbuild --target x86_64 --with paeonly --without bootwrapper --without debug --without debuginfo --without perf --without tools
-** TODO rpmbuild --target x86_64 --with dbonly --without bootwrapper --without debug --without debuginfo --without perf --without tools
-** TODO rpmbuild --target x86_64 --with sparce --without bootwrapper --without debug --without debuginfo --without perf --without tool
-** TODO rpmbuild --target x86_64 --with cross --without bootwrapper --without debug --without debuginfo --without perf --without tools
-** TODO rpmbuild --target x86_64 --with vanilla --without vdso --without bootwrapper --without debug --without debuginfo --without perf --without tools
-** TODO rpmbuild --target x86_64 --with baseonly
-** TODO rpmbuild --target x86_64 --with paeonly
-** TODO rpmbuild --target x86_64 --with dbgonly
-** TODO rpmbuild --target x86_64 --with sparse
-** TODO rpmbuild --target x86_64 --with cross
-** TODO rpmbuild --target x86_64 --with release
-** TODO rpmbuild --target x86_64 --with vanilla
-
-* Other/ Misc
-** Blog post week 4
+** Other/ Misc
+*** TODO Blog post week 4
+   
