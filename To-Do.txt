@@ -1,13 +1,25 @@
 * Tasks 
-** TODO Find CONFIG_MODULE_COMPRESS
-   
-   NOTE: use upstream module compression instead of fedora's
+  General NOTE:
+  - Double check email address
+  - When send request for PATCHvX add a summary of the things that changed
+  - Keep comments less than 80 chars
+  - Have script questions ask mentor
+  - Keep a log of all the changes in my system and report possible bugs
+  - Prof read everything before sending it [ A lot of miss spellings DUDE! ]
 
-** TODO Find CONFIG_PWM in the config file  
+** DONE Find CONFIG_MODULE_COMPRESS
+*** TODO use upstream module compression instead of fedora's
+
+** DONE Find CONFIG_PWM in the config file
+
+   NOTE: config files are in config directory. The correct config files is use
+   depending on the target architecture the kernel is being compiled for.
    
-   NOTE: create script to double check generated config 
-   https://bugzilla.redhat.com/show_bug.cgi?id=1347454
- 
+   ~/kernel/kernel-4.6.fc25/linux-4.7.0-0.rc4.git1.1.local.fc25.x86_64/configs/ 
+*** TODO create script to double check generated config 
+   
+    NOTE: https://bugzilla.redhat.com/show_bug.cgi?id=1347454
+   
 ** DONE Remove old scripts
 
 *** :patch:accepted: bumspecfile.py
@@ -31,7 +43,7 @@
 
     NOTE: Not making much progress here
 
-*** DONE :patch:in_review: grab-logs.sh
+*** :patch:in_review: grab-logs.sh
 **** DONE [PATCHv2] FIX wget warning and save logs to log directory if already present.
 
     NOTE: Download the logs from koji server
@@ -69,8 +81,8 @@
    
     NOTE:
 *** :patch:in_review: generate-perf-man.sh
-**** TODO [PATCHv3] Give a prompt explaining what would you be asking next.
-**** TODO [PATCHv3] Delete unnecessary comments
+**** TODO [PATCHv4] Give a prompt explaining what would you be asking next.
+**** TODO [PATCHv4] Delete unnecessary comments
 
      NOTE: Helps generate the perf-man tarball
 
