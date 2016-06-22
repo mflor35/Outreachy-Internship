@@ -1,5 +1,13 @@
 * Tasks 
-  
+** TODO Find CONFIG_MODULE_COMPRESS
+   
+   NOTE: use upstream module compression instead of fedora's
+
+** TODO Find CONFIG_PWM in the config file  
+   
+   NOTE: create script to double check generated config 
+   https://bugzilla.redhat.com/show_bug.cgi?id=1347454
+ 
 ** DONE Remove old scripts
 
 *** :patch:accepted: bumspecfile.py
@@ -78,7 +86,7 @@
 
    
 ** DONE Test rpmbuild combos
-*** TODO send summary to Laura    
+*** DONE send summary to Laura    
 *** NOTE:
 **** :successful: rpmbuild --target x86_64 --without debuginfo --without perf --without tools 
 **** :successful: rpmbuild --target x86_64 --without debuginfo --with perf --with tools 
@@ -107,4 +115,6 @@
 
 ** Other/ Misc
 *** TODO Blog post week 4
+
+
    
