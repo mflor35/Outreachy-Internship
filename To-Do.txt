@@ -1,21 +1,27 @@
 * Tasks 
   General NOTE:
-  - Double check email address
+  - Double check email addresses
   - When send request for PATCHvX add a summary of the things that changed
   - Keep comments less than 80 chars
   - Have script questions ask mentor
   - Keep a log of all the changes in my system and report possible bugs
   - Prof read everything before sending it [ A lot of miss spellings DUDE! ]
 
-** DONE Find CONFIG_MODULE_COMPRESS
+** TODO clean up kernel.spec
+   
+   NOTE: Remove unused-kernel-patches line #114 kernel.spec
+
+** TODO CONFIG_MODULE_COMPRESS
+*** TODO Build and install kernel with COMPRES_MODULES
 *** TODO use upstream module compression instead of fedora's
 
-** DONE Find CONFIG_PWM in the config file
+** TODO CONFIG_PWM
 
    NOTE: config files are in config directory. The correct config files is use
    depending on the target architecture the kernel is being compiled for.
    
-   ~/kernel/kernel-4.6.fc25/linux-4.7.0-0.rc4.git1.1.local.fc25.x86_64/configs/ 
+   ~/kernel/kernel-4.6.fc25/linux-4.7.0-0.rc4.git1.1.local.fc25.x86_64/configs/
+ 
 *** TODO create script to double check generated config 
    
     NOTE: https://bugzilla.redhat.com/show_bug.cgi?id=1347454
@@ -39,7 +45,7 @@
 ** DONE Fix scripts
 
 *** :analysing: sort-config 
-**** TODO Try to fix it
+**** :low_priority: TODO Try to fix it
 
     NOTE: Not making much progress here
 
@@ -79,9 +85,10 @@
 
 *** :patch:in_review: check-patchlist.sh
    
-    NOTE:
+    NOTE: Highlights 
+
 *** :patch:in_review: generate-perf-man.sh
-**** TODO [PATCHv4] Give a prompt explaining what would you be asking next.
+**** TODO [PATCHv4] Instead of prompt use a flag eg. generate-perf-man.sh --version=x.y
 **** TODO [PATCHv4] Delete unnecessary comments
 
      NOTE: Helps generate the perf-man tarball
@@ -107,8 +114,8 @@
 **** :successful: rpmbuild --target x86_64 --with debuginfo --with perf --with tools
 **** :successful: rpmbuild --target x86_64 --with debuginfo --with perf --without tools
 **** :successful: rpmbuild --target x86_64 --with debuginfo --without perf --with tools
-**** :successgul: rpmbuild --target x86_64 --without debug --without debuginfo --without perf --without perf --without tools
-**** :successgul: rpmbuild --target x86_64 --without bootwrapper --without debug --without debuginfo --without perf --without tools 
+**** :successful: rpmbuild --target x86_64 --without debug --without debuginfo --without perf --without perf --without tools
+**** :successful: rpmbuild --target x86_64 --without bootwrapper --without debug --without debuginfo --without perf --without tools 
 **** :successful: rpmbuild --target x86_64 --without vdso --without bootwrapper --without debug --without debuginfo --without perf --without tools  
 **** :successful: rpmbuild --target x86_64 --with pae --without vdso --without bootwrapper --without debug --without debuginfo --without perf --without tools
 **** :successful: rpmbuild --target x86_64 --with baseonly --without vdso --without bootwrapper --without debug --without debuginfo --without perf --without tools
@@ -118,12 +125,12 @@
 **** :successful: rpmbuild --target x86_64 --with cross --without bootwrapper --without debug --without debuginfo --without perf --without tools
 **** :successful: rpmbuild --target x86_64 --with vanilla --without vdso --without bootwrapper --without debug --without debuginfo --without perf --without tools
 **** :successful: rpmbuild --target x86_64 --with baseonly
-**** :successgul: rpmbuild --target x86_64 --with paeonly
+**** :successful: rpmbuild --target x86_64 --with paeonly
 **** :successful: rpmbuild --target x86_64 --with dbgonly
-**** :successgul: rpmbuild --target x86_64 --with sparse
-**** :successgul: rpmbuild --target x86_64 --with cross
-**** :successgul: rpmbuild --target x86_64 --with release
-**** :successgul: rpmbuild --target x86_64 --with vanilla
+**** :successful: rpmbuild --target x86_64 --with sparse
+**** :successful: rpmbuild --target x86_64 --with cross
+**** :successful: rpmbuild --target x86_64 --with release
+**** :successful: rpmbuild --target x86_64 --with vanilla
 
 ** Other/ Misc
 *** TODO Blog post week 4
