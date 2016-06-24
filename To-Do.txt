@@ -7,24 +7,23 @@
   - Keep a log of all the changes in my system and report possible bugs
   - Prof read everything before sending it [ A lot of miss spellings DUDE! ]
 
-** TODO clean up kernel.spec
-   
-   NOTE: Remove unused-kernel-patches line #114 kernel.spec
+** DONE remove unused-kernel-patches line #114 kernel.spec
+*** TODO send patch
+
+   NOTE: No longer needed.  
 
 ** TODO CONFIG_MODULE_COMPRESS
 *** TODO Build and install kernel with COMPRES_MODULES
 *** TODO use upstream module compression instead of fedora's
 
-** TODO CONFIG_PWM
+** TODO create script to double check generated config
 
    NOTE: config files are in config directory. The correct config files is use
    depending on the target architecture the kernel is being compiled for.
    
    ~/kernel/kernel-4.6.fc25/linux-4.7.0-0.rc4.git1.1.local.fc25.x86_64/configs/
- 
-*** TODO create script to double check generated config 
    
-    NOTE: https://bugzilla.redhat.com/show_bug.cgi?id=1347454
+   https://bugzilla.redhat.com/show_bug.cgi?id=1347454
    
 ** DONE Remove old scripts
 
@@ -63,9 +62,9 @@
 ** DONE New Scripts 
 
 *** :patch:in_review: newpatch.sh
-**** TODO [PATCHv2] FIX not being able to run the script from any where
-**** TODO [PATCHv2] Change rpmdev-bumspecfile instead change defineid macro
-**** TODO [PATCHv2] Check for number of arguments rather than specific case
+**** DONE [PATCHv2] FIX not being able to run the script from any where
+**** DONE [PATCHv2] Check for number of arguments rather than specific case
+**** TODO [PATCHv2] Do not use rpmdev-bumspecfile instead change defineid macro
 **** TODO [PATCHv2] check test for checking if a patch is in the current tree
   
     NOTE: script will be used to add a new patch to the tree. It should take the path 
@@ -74,9 +73,9 @@
    
     eg. ./newpatch path/to/patch description
 
-*** :patch:in_review: fast-build.sh
+*** :patch:accepted: fast-build.sh
 **** DONE Submit patch to delete fast-x86_64
-**** TODO FIX unclear comment description
+**** DONE FIX unclear comment description [ Fixed by Laura ]
 
     NOTE: Allows for the compilation of a custom kernel with the bare minimum.
     The script takes an architecture and source rpm package as argument.
@@ -84,17 +83,19 @@
     eg. ./fast-build.sh x86_64 kernel-X.X.X.src.rpm
 
 *** :patch:in_review: check-patchlist.sh
-   
-    NOTE: Highlights 
+**** DONE [PATCHv2] Highlight patches accordingly when use flag -s -p
+**** DONE [PATCHv2] Add another a character identifier instead of color, not all terminals support color
+**** TODO send PATCHv2
+ 
+    NOTE: Highlights patches that are tracked in PatchList.txt and the kernel.spec.
+    
 
 *** :patch:in_review: generate-perf-man.sh
-**** TODO [PATCHv4] Instead of prompt use a flag eg. generate-perf-man.sh --version=x.y
-**** TODO [PATCHv4] Delete unnecessary comments
+**** DONE [PATCHv4] Delete unnecessary comments
+**** DONE [PATCHv4] Instead of prompt use a flag eg. generate-perf-man.sh --version=x.y
+**** TODO send [PATCHv4]
 
      NOTE: Helps generate the perf-man tarball
-
-     NOTE: When send request for PATCHvX add a description of the things that have 
-     been changing.
 
 *** :buggy: test-rpmbuilds
 **** TODO Log the result of each build
@@ -133,7 +134,13 @@
 **** :successful: rpmbuild --target x86_64 --with vanilla
 
 ** Other/ Misc
-*** TODO Blog post week 4
+*** DONE Blog post week 4 [ week 3 ]
 
+    NOTE: Prof read and publish
+    
+*** DONE Check Fedora Project blog configuration
+    
+    NOTE: Everything looks good
 
+*** TODO Blog post week 5 [ week 4 ]
    
