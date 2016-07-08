@@ -48,12 +48,12 @@
 
     NOTE: Not making much progress here
 
-*** :patch:in_review: grab-logs.sh
+*** :patch:accepted: grab-logs.sh
 **** DONE [PATCHv2] FIX wget warning and save logs to log directory if already present.
 
     NOTE: Download the logs from koji server
 
-*** :patch:in_review: generate-git-snapshot.sh
+*** :patch:accepted: generate-git-snapshot.sh
 **** DONE [PATCHv2] FIX Comments bigger than 80 characters in length.
 
     NOTE: Generates a git snapshot between upstream git tree and fedora's tree.
@@ -93,7 +93,7 @@
 *** :patch:in_review: generate-perf-man.sh
 **** DONE [PATCHv4] Delete unnecessary comments
 **** DONE [PATCHv4] Instead of prompt use a flag eg. generate-perf-man.sh --version=x.y
-**** TODO send [PATCHv4]
+**** DONE send [PATCHv4]
 
      NOTE: Helps generate the perf-man tarball
 
