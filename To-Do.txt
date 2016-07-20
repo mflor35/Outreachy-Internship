@@ -45,7 +45,7 @@
     
     NOTE: The functionality of this script is already in kernel.spec
 
-
+    
 ** DONE Fix scripts
 
 *** :analysing: sort-config 
@@ -64,7 +64,7 @@
     NOTE: Generates a git snapshot between upstream git tree and fedora's tree.
 
     
-** DONE New Scripts 
+** TODO New Scripts 
 
 *** :patch:in_review: newpatch.sh
 **** DONE [PATCHv2] FIX not being able to run the script from any where
@@ -72,8 +72,8 @@
 **** DONE [PATCHv2] Do not use rpmdev-bumspecfile instead change defineid macro
 **** DONE [PATCHv2] check test for checking if a patch is in the current tree
 **** DONE [PATCHv3] patches cannot have "-" to be used as buildid
-**** TODO [PATCHv4] use cp instead of mv
-**** TODO [PATCHV4] change the newpatch already in tree, do not create a new one
+**** DONE [PATCHv4] use cp instead of mv
+**** DONE [PATCHV4] change the newpatch already in tree, do not create a new one
 
     NOTE: script will be used to add a new patch to the tree. It should take the path 
     of the patch and add it to the tree. The script also needs to add the patch to 
@@ -101,7 +101,7 @@
 *** :patch:in_review: generate-perf-man.sh
 **** DONE [PATCHv4] Delete unnecessary comments
 **** DONE [PATCHv4] Instead of prompt use a flag eg. generate-perf-man.sh --version=x.y
-**** TODO [PATCHv5] FORGOT to define usage!
+**** DONE [PATCHv5] FORGOT to define usage!
 
      NOTE: Helps generate the perf-man tarball
 
