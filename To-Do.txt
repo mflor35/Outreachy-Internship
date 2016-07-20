@@ -7,13 +7,18 @@
   - Keep a log of all the changes in my system and report possible bugs
   - Prof read everything before sending it [ A lot of miss spellings DUDE! ]
 
-** DONE remove unused-kernel-patches line #114 kernel.spec
-*** TODO send patch
-
-   NOTE: No longer needed.  
+** :patch:accepted: remove unused-kernel-patches line #114 Makefile
+*** DONE send patch
+    NOTE: No longer needed.  
 
 ** TODO CONFIG_MODULE_COMPRESS
-*** TODO Build and install kernel with COMPRES_MODULES
+*** TODO Build and install kernel with CONFIG_MODULE_COMPRESS
+    CONFIG_MODULE_COMPRESS=y [config-generic]
+    zipmodules=0             [kernel.spec]
+    
+    NOTE: Building fails 
+          sed: can't read /home/masteroshi/rpmbuild/BUILDROOT/kernel-4.7.0-0.rc7.git4.1.module_compression.fc25.x86_64/k-d.list
+	 
 *** TODO use upstream module compression instead of fedora's
 
 ** TODO create script to double check generated config
@@ -28,7 +33,7 @@
 ** DONE Remove old scripts
 
 *** :patch:accepted: bumspecfile.py
-
+    
     NOTE: pythong script that changes the version and revision number of the specfile.
     This script is no longer in use. Use rpmdev-bumspecfile instead.
 
@@ -58,15 +63,18 @@
 
     NOTE: Generates a git snapshot between upstream git tree and fedora's tree.
 
-
+    
 ** DONE New Scripts 
 
 *** :patch:in_review: newpatch.sh
 **** DONE [PATCHv2] FIX not being able to run the script from any where
 **** DONE [PATCHv2] Check for number of arguments rather than specific case
-**** TODO [PATCHv2] Do not use rpmdev-bumspecfile instead change defineid macro
-**** TODO [PATCHv2] check test for checking if a patch is in the current tree
-  
+**** DONE [PATCHv2] Do not use rpmdev-bumspecfile instead change defineid macro
+**** DONE [PATCHv2] check test for checking if a patch is in the current tree
+**** DONE [PATCHv3] patches cannot have "-" to be used as buildid
+**** TODO [PATCHv4] use cp instead of mv
+**** TODO [PATCHV4] change the newpatch already in tree, do not create a new one
+
     NOTE: script will be used to add a new patch to the tree. It should take the path 
     of the patch and add it to the tree. The script also needs to add the patch to 
     kernel.spec and change the macro # defineid local to the patch name.
@@ -85,15 +93,15 @@
 *** :patch:in_review: check-patchlist.sh
 **** DONE [PATCHv2] Highlight patches accordingly when use flag -s -p
 **** DONE [PATCHv2] Add another a character identifier instead of color, not all terminals support color
-**** TODO send PATCHv2
+**** TODO [PATCHv3] change characters to +, -, .
+**** TODO [PATCHv3] Fix logic
  
-    NOTE: Highlights patches that are tracked in PatchList.txt and the kernel.spec.
-    
+     NOTE: Highlights patches that are tracked in PatchList.txt and the
 
 *** :patch:in_review: generate-perf-man.sh
 **** DONE [PATCHv4] Delete unnecessary comments
 **** DONE [PATCHv4] Instead of prompt use a flag eg. generate-perf-man.sh --version=x.y
-**** DONE send [PATCHv4]
+**** TODO [PATCHv5] FORGOT to define usage!
 
      NOTE: Helps generate the perf-man tarball
 
@@ -135,12 +143,14 @@
 
 ** Other/ Misc
 *** DONE Blog post week 4 [ week 3 ]
-
     NOTE: Prof read and publish
-    
 *** DONE Check Fedora Project blog configuration
-    
     NOTE: Everything looks good
+*** DONE Blog post week 5 [ week 4 ]
+    NOTE: DevNation
 
-*** TODO Blog post week 5 [ week 4 ]
+    NOTE: updates did not get published?
+*** TODO Blog post week 6 [ week 5 ]
+
+*** TODO Blog post week 7 [ week 6 ] 
    
